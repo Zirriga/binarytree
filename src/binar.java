@@ -7,7 +7,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
     static class node<t1, t2> {
         t1 key;
         t2 value;
-        node<t1, t2> left, right, parent;
+        node<t1, t2> left, right;
 
         node(t1 key, t2 value) {
             this.key = key;
@@ -123,18 +123,24 @@ public class binar<t1 extends Comparable<t1>, t2> {
         }
     }
     public t2 getParent(t1 k) {
-        node<t1, t2> x = root, y = null;
-        while ((x.right != null)|(x.left != null)) {
+        node<t1, t2> x = root;
+        t2 y = null;
+        while ((x != null)) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
-                return y.value;
+                if (y != null) {
+                    return y;
+                }
+                else return null;
             }
-            if (cmp < 0) {
-                x = x.left;
-                y = x;
-            } else {
-                x = x.right;
-                y = x;
+            else {
+                if (cmp < 0) {
+                    y = x.value;
+                    x = x.left;
+                } else {
+                    y = x.value;
+                    x = x.right;
+                }
             }
         }
         return null;
@@ -144,8 +150,12 @@ public class binar<t1 extends Comparable<t1>, t2> {
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
-                x = x.right;
-                return x.value;
+                if (x.right != null) {
+                    return x.right.value;
+                }
+                else{
+                    return null;
+                }
             }
             if (cmp < 0) {
                 x = x.left;
@@ -160,8 +170,12 @@ public class binar<t1 extends Comparable<t1>, t2> {
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
-                x = x.left;
-                return x.value;
+                if (x.left != null) {
+                    return x.left.value;
+                }
+                else{
+                    return null;
+                }
             }
             if (cmp < 0) {
                 x = x.left;
