@@ -122,6 +122,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
             x.value = leftMost.value;
         }
     }
+
     public t2 getParent(t1 k) {
         node<t1, t2> x = root;
         t2 y = null;
@@ -130,10 +131,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
             if (cmp == 0) {
                 if (y != null) {
                     return y;
-                }
-                else return null;
-            }
-            else {
+                } else return null;
+            } else {
                 if (cmp < 0) {
                     y = x.value;
                     x = x.left;
@@ -145,6 +144,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
         }
         return null;
     }
+
     public t2 getRightChild(t1 k) {
         node<t1, t2> x = root;
         while (x != null) {
@@ -152,8 +152,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
             if (cmp == 0) {
                 if (x.right != null) {
                     return x.right.value;
-                }
-                else{
+                } else {
                     return null;
                 }
             }
@@ -165,6 +164,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
         }
         return null;
     }
+
     public t2 getLeftChild(t1 k) {
         node<t1, t2> x = root;
         while (x != null) {
@@ -172,8 +172,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
             if (cmp == 0) {
                 if (x.left != null) {
                     return x.left.value;
-                }
-                else{
+                } else {
                     return null;
                 }
             }
