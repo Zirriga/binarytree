@@ -4,21 +4,21 @@ import org.omg.CORBA.Any;
 import java.util.ArrayList;
 
 public class binar<t1 extends Comparable<t1>, t2> {
-    static class node<t1, t2> {
+    static class Node<t1, t2> {
         t1 key;
         t2 value;
-        node<t1, t2> left, right;
+        Node<t1, t2> left, right;
 
-        node(t1 key, t2 value) {
+        Node(t1 key, t2 value) {
             this.key = key;
             this.value = value;
         }
     }
 
-    private node<t1, t2> root = null;
+    private Node<t1, t2> root = null;
 
-    public boolean containsKey(t1 k) {
-        node<t1, t2> x = root;
+    public boolean ContainsKey(t1 k) {
+        Node<t1, t2> x = root;
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
@@ -33,8 +33,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
         return false;
     }
 
-    public t2 get(t1 k) {
-        node<t1, t2> x = root;
+    public t2 Get(t1 k) {
+        Node<t1, t2> x = root;
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
@@ -49,8 +49,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
         return null;
     }
 
-    public void add(t1 k, t2 v) {
-        node<t1, t2> x = root, y = null;
+    public void Add(t1 k, t2 v) {
+        Node<t1, t2> x = root, y = null;
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
@@ -65,7 +65,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
                 }
             }
         }
-        node<t1, t2> newNode = new node<>(k, v);
+        Node<t1, t2> newNode = new Node<>(k, v);
         if (y == null) {
             root = newNode;
         } else {
@@ -78,8 +78,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
 
     }
 
-    public void remove(t1 k) {
-        node<t1, t2> x = root, y = null;
+    public void Remove(t1 k) {
+        Node<t1, t2> x = root, y = null;
         while (x != null) {
             int comp = k.compareTo(x.key);
             if (comp == 0) {
@@ -107,7 +107,7 @@ public class binar<t1 extends Comparable<t1>, t2> {
                 }
             }
         } else {
-            node<t1, t2> leftMost = x.right;
+            Node<t1, t2> leftMost = x.right;
             y = null;
             while (leftMost.left != null) {
                 y = leftMost;
@@ -123,8 +123,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
         }
     }
 
-    public t2 getParent(t1 k) {
-        node<t1, t2> x = root;
+    public t2 GetParent(t1 k) {
+        Node<t1, t2> x = root;
         t2 y = null;
         while ((x != null)) {
             int cmp = k.compareTo(x.key);
@@ -145,8 +145,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
         return null;
     }
 
-    public t2 getRightChild(t1 k) {
-        node<t1, t2> x = root;
+    public t2 GetRightChild(t1 k) {
+        Node<t1, t2> x = root;
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
@@ -165,8 +165,8 @@ public class binar<t1 extends Comparable<t1>, t2> {
         return null;
     }
 
-    public t2 getLeftChild(t1 k) {
-        node<t1, t2> x = root;
+    public t2 GetLeftChild(t1 k) {
+        Node<t1, t2> x = root;
         while (x != null) {
             int cmp = k.compareTo(x.key);
             if (cmp == 0) {
